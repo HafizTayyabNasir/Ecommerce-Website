@@ -50,7 +50,7 @@ const bestsellerProducts = [
     slug: "phantom-oversized-tee",
     price: 45,
     compareAtPrice: null,
-    image: "/images/products/tee-black.jpg",
+    image: "/images/products/phantom-oversized-tee.jpg",
     badge: "bestseller",
     rating: 4.8,
     reviewCount: 124,
@@ -60,7 +60,7 @@ const bestsellerProducts = [
     slug: "urban-cargo-jogger",
     price: 89,
     compareAtPrice: 120,
-    image: "/images/products/jogger-olive.jpg",
+    image: "/images/products/urban-cargo-jogger.jpg",
     badge: "sale",
     rating: 4.9,
     reviewCount: 89,
@@ -70,7 +70,7 @@ const bestsellerProducts = [
     slug: "stealth-hoodie",
     price: 110,
     compareAtPrice: null,
-    image: "/images/products/hoodie-gray.jpg",
+    image: "/images/products/stealth-hoodie.jpg",
     badge: "new",
     rating: 4.7,
     reviewCount: 56,
@@ -80,7 +80,7 @@ const bestsellerProducts = [
     slug: "drift-training-shorts",
     price: 55,
     compareAtPrice: 65,
-    image: "/images/products/shorts-black.jpg",
+    image: "/images/products/drift-training-shorts.jpg",
     badge: "sale",
     rating: 4.6,
     reviewCount: 42,
@@ -189,17 +189,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero Image Placeholder */}
+            {/* Hero Image */}
             <div className="hidden lg:block relative">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-transparent border border-white/10">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 mx-auto bg-[rgb(var(--accent))] rounded-2xl flex items-center justify-center mb-4 opacity-80">
-                      <span className="text-white font-black text-5xl font-['Space_Grotesk']">S</span>
-                    </div>
-                    <p className="text-white/30 text-sm uppercase tracking-widest">Lookbook Coming Soon</p>
-                  </div>
-                </div>
+                <img src="/images/hero.jpg" alt="Suspended Streetwear" className="w-full h-full object-cover" />
                 {/* Decorative elements */}
                 <div className="absolute top-4 right-4">
                   <Badge variant="accent" className="text-xs">NEW</Badge>
@@ -263,8 +256,8 @@ export default function HomePage() {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
 
-                {/* Placeholder image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--muted))] to-[rgb(var(--secondary))] group-hover:scale-105 transition-transform duration-700" />
+                {/* Image */}
+                <img src={collection.image} alt={collection.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 z-20">
@@ -315,7 +308,7 @@ export default function HomePage() {
               >
                 {/* Image */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-[rgb(var(--muted))]">
-                  <div className="product-image w-full h-full bg-gradient-to-br from-[rgb(var(--muted))] to-[rgb(var(--secondary))]" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
 
                   {/* Badge */}
                   <div className="absolute top-3 left-3 z-10">
