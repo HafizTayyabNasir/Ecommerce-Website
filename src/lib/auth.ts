@@ -43,6 +43,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null;
         }
 
+        // Allow login via Vercel Environment Variables
+        if (
+          process.env.ADMIN_EMAIL &&
+          process.env.ADMIN_PASSWORD &&
+          credentials.email === process.env.ADMIN_EMAIL &&
+          credentials.password === process.env.ADMIN_PASSWORD
+        ) {
+          return {
+            id: "env-admin",
+            name: "System Admin",
+            email: process.env.ADMIN_EMAIL,
+            role: "ADMIN" as UserRole,
+          };
+        }
+
         const user = await prisma.user.findUnique({
           where: { email: credentials.email as string },
         });
