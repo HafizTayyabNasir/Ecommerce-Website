@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/store";
 import { cn, formatPrice } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 interface Variant {
   id: string;
@@ -25,6 +26,7 @@ export function AddToCartForm({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+  const router = useRouter();
 
   // Extract unique option types and values from variants
   // e.g., optionsMap = { Size: ["S", "M", "L"], Color: ["Black", "White"] }
@@ -105,6 +107,27 @@ export function AddToCartForm({ product }: { product: Product }) {
     }, 500);
   };
 
+  const handleBuyNow = () => {
+    if (product.variants.length > 0 && !currentVariant) return;
+    if (currentVariant && currentVariant.quantity <= 0) return;
+
+    setIsAdding(true);
+    
+    addItem({
+      productId: product.id,
+      variantId: currentVariant?.id,
+      name: product.name,
+      variantName: currentVariant?.name,
+      price: currentVariant ? Number(currentVariant.price) : Number(product.price),
+      image: product.image,
+      quantity,
+      maxQuantity: currentVariant?.quantity || 99,
+    });
+
+    // Instant redirect to cart/checkout
+    router.push("/cart");
+  };
+
   const isOutOfStock = currentVariant ? currentVariant.quantity <= 0 : false;
   const currentPrice = currentVariant ? Number(currentVariant.price) : Number(product.price);
 
@@ -183,33 +206,44 @@ export function AddToCartForm({ product }: { product: Product }) {
 
       {/* Quantity & Add to Cart */}
       <div className="space-y-4 pt-4 border-t border-[rgb(var(--border))]">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center border border-[rgb(var(--border))] rounded-md h-12 w-32">
-            <button 
-              className="flex-1 h-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] disabled:opacity-50"
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              disabled={quantity <= 1 || isOutOfStock}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center border border-[rgb(var(--border))] rounded-md h-12 w-32 shrink-0">
+              <button 
+                className="flex-1 h-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] disabled:opacity-50"
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                disabled={quantity <= 1 || isOutOfStock}
+              >
+                -
+              </button>
+              <span className="flex-1 text-center font-medium">
+                {quantity}
+              </span>
+              <button 
+                className="flex-1 h-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] disabled:opacity-50"
+                onClick={() => setQuantity(Math.min(currentVariant?.quantity || 99, quantity + 1))}
+                disabled={(currentVariant && quantity >= currentVariant.quantity) || isOutOfStock}
+              >
+                +
+              </button>
+            </div>
+            
+            <Button 
+              variant="outline"
+              className="flex-1 h-12 text-base font-bold tracking-wide border-[rgb(var(--foreground))] text-[rgb(var(--foreground))] bg-transparent hover:bg-[rgb(var(--foreground))] hover:text-[rgb(var(--background))]"
+              onClick={handleAddToCart}
+              disabled={isOutOfStock || isAdding}
             >
-              -
-            </button>
-            <span className="flex-1 text-center font-medium">
-              {quantity}
-            </span>
-            <button 
-              className="flex-1 h-full text-[rgb(var(--muted-foreground))] hover:text-[rgb(var(--foreground))] disabled:opacity-50"
-              onClick={() => setQuantity(Math.min(currentVariant?.quantity || 99, quantity + 1))}
-              disabled={(currentVariant && quantity >= currentVariant.quantity) || isOutOfStock}
-            >
-              +
-            </button>
+              {isAdding ? "Adding..." : isOutOfStock ? "Out of Stock" : "Add to Cart"}
+            </Button>
           </div>
           
           <Button 
-            className="flex-1 h-12 text-base font-bold tracking-wide"
-            onClick={handleAddToCart}
+            className="w-full h-12 text-base font-bold tracking-wide bg-[rgb(var(--foreground))] text-[rgb(var(--background))] hover:bg-[rgb(var(--foreground))/90]"
+            onClick={handleBuyNow}
             disabled={isOutOfStock || isAdding}
           >
-            {isAdding ? "Adding..." : isOutOfStock ? "Out of Stock" : "Add to Cart"}
+            Buy it now
           </Button>
         </div>
         
