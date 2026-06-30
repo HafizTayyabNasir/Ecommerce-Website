@@ -18,28 +18,28 @@ const featuredCollections = [
     name: "Essential Tees",
     slug: "tees-tops",
     description: "Premium cotton, oversized fits",
-    image: "/images/collections/tees.jpg",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80",
     productCount: 12,
   },
   {
     name: "Hoodies & Sweats",
     slug: "hoodies-sweats",
     description: "Heavy fleece, street-ready",
-    image: "/images/collections/hoodies.jpg",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80",
     productCount: 8,
   },
   {
     name: "Joggers & Pants",
     slug: "joggers-pants",
     description: "Move without limits",
-    image: "/images/collections/joggers.jpg",
+    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&q=80",
     productCount: 10,
   },
   {
     name: "Accessories",
     slug: "accessories",
     description: "Complete your look",
-    image: "/images/collections/accessories.jpg",
+    image: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=800&q=80",
     productCount: 15,
   },
 ];
@@ -50,7 +50,7 @@ const bestsellerProducts = [
     slug: "phantom-oversized-tee",
     price: 45,
     compareAtPrice: null,
-    image: "/images/products/phantom-oversized-tee.jpg",
+    image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80",
     badge: "bestseller",
     rating: 4.8,
     reviewCount: 124,
@@ -60,7 +60,7 @@ const bestsellerProducts = [
     slug: "urban-cargo-jogger",
     price: 89,
     compareAtPrice: 120,
-    image: "/images/products/urban-cargo-jogger.jpg",
+    image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80",
     badge: "sale",
     rating: 4.9,
     reviewCount: 89,
@@ -70,7 +70,7 @@ const bestsellerProducts = [
     slug: "stealth-hoodie",
     price: 110,
     compareAtPrice: null,
-    image: "/images/products/stealth-hoodie.jpg",
+    image: "https://images.unsplash.com/photo-1614031679233-a3d5f8a00ef9?w=800&q=80",
     badge: "new",
     rating: 4.7,
     reviewCount: 56,
@@ -80,7 +80,7 @@ const bestsellerProducts = [
     slug: "drift-training-shorts",
     price: 55,
     compareAtPrice: 65,
-    image: "/images/products/drift-training-shorts.jpg",
+    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&q=80",
     badge: "sale",
     rating: 4.6,
     reviewCount: 42,
@@ -118,89 +118,50 @@ const trustBadges = [
 export default function HomePage() {
   return (
     <div className="page-transition">
-      {/* ─── HERO SECTION ──────────────────────────────────── */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[rgb(var(--foreground))]">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="bg-grid w-full h-full" />
+      {/* ─── HERO SECTION (Uniworth Style) ─────────────────── */}
+      <section className="relative w-full h-[70vh] md:h-[85vh] bg-black overflow-hidden">
+        {/* Full-width Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1600&q=80" 
+            alt="Suspended Hero" 
+            className="w-full h-full object-cover object-center opacity-80"
+          />
+          {/* Subtle gradient overlay to make text readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
         </div>
 
-        {/* Floating accent shapes */}
-        <div className="absolute top-20 right-[15%] w-72 h-72 bg-[rgb(var(--accent))] rounded-full opacity-10 blur-[100px]" />
-        <div className="absolute bottom-20 left-[10%] w-96 h-96 bg-[rgb(var(--accent))] rounded-full opacity-5 blur-[120px]" />
-
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white">
-              <Badge variant="accent" className="mb-6 text-xs px-3 py-1">
-                NEW DROP — SUMMER &apos;25
-              </Badge>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] tracking-tighter mb-6">
-                MOVE
-                <br />
-                <span className="text-gradient">DIFFERENT.</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-white/60 max-w-lg mb-8 font-light leading-relaxed">
-                Premium streetwear engineered for the culture. 
-                Oversized silhouettes, heavyweight fabrics, and details that set you apart.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  variant="accent"
-                  size="xl"
-                  asChild
-                  className="group"
-                >
-                  <Link href="/products">
-                    Shop New Arrivals
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="xl"
-                  asChild
-                  className="text-white border-white/30 hover:bg-white/10 hover:text-white"
-                >
-                  <Link href="/collections">View Collections</Link>
-                </Button>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-8 mt-12 pt-8 border-t border-white/10">
-                <div>
-                  <p className="text-2xl font-bold text-white">50K+</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">
-                    Happy Customers
-                  </p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">4.9</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">
-                    Average Rating
-                  </p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">200+</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">
-                    Styles Available
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image */}
-            <div className="hidden lg:block relative">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-transparent border border-white/10">
-                <img src="/images/hero.jpg" alt="Suspended Streetwear" className="w-full h-full object-cover" />
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4">
-                  <Badge variant="accent" className="text-xs">NEW</Badge>
-                </div>
-              </div>
-            </div>
+        {/* Content overlaid on the left */}
+        <div className="relative h-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+          <div className="max-w-xl text-white">
+            <p className="text-xl md:text-2xl font-light mb-2 tracking-wide">Style accents</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-4 uppercase">
+              ACCESSORIES
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-10 font-light">
+              Crafted to complement every wardrobe.
+            </p>
+            
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="text-white border-white bg-transparent hover:bg-white hover:text-black uppercase tracking-[0.2em] text-xs font-semibold rounded-none px-10 py-6"
+            >
+              <Link href="/collections/accessories">
+                SHOP ACCESSORIES
+              </Link>
+            </Button>
           </div>
         </div>
+        
+        {/* Carousel Arrows (static for design) */}
+        <button className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors border border-white/20">
+          <ChevronRight className="h-6 w-6 rotate-180" />
+        </button>
+        <button className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors border border-white/20">
+          <ChevronRight className="h-6 w-6" />
+        </button>
       </section>
 
       {/* ─── TRUST BADGES ──────────────────────────────────── */}
