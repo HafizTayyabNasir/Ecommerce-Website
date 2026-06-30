@@ -132,7 +132,7 @@ async function main() {
           create: p.colors.flatMap((color, ci) =>
             p.sizes.map((size, si) => ({
               name: `${size} / ${color}`,
-              sku: `${p.slug.split("-").map(w => w[0]).join("").toUpperCase()}-${color.replace(/[^a-zA-Z]/g, "").slice(0, 3).toUpperCase()}-${size.replace("/", "")}`,
+              sku: `${p.slug.split("-").map(w => w[0]).join("").toUpperCase()}-${color.replace(/[^a-zA-Z]/g, "").slice(0, 3).toUpperCase()}-${size.replace("/", "")}-${Math.random().toString(36).substring(7).toUpperCase()}`,
               price: p.price,
               compareAtPrice: p.compareAt || null,
               quantity: Math.floor(Math.random() * 20) + 5,
