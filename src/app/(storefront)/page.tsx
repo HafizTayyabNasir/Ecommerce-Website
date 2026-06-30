@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
+import { HeroCarousel } from "@/components/storefront/hero-carousel";
 // Demo data for the homepage
 const featuredCollections = [
   {
@@ -118,51 +118,8 @@ const trustBadges = [
 export default function HomePage() {
   return (
     <div className="page-transition">
-      {/* ─── HERO SECTION (Uniworth Style) ─────────────────── */}
-      <section className="relative w-full h-[70vh] md:h-[85vh] bg-black overflow-hidden">
-        {/* Full-width Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1600&q=80" 
-            alt="Zero Lifestyle Hero" 
-            className="w-full h-full object-cover object-center opacity-80"
-          />
-          {/* Subtle gradient overlay to make text readable */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
-        </div>
-
-        {/* Content overlaid on the left */}
-        <div className="relative h-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <div className="max-w-xl text-white">
-            <p className="text-xl md:text-2xl font-light mb-2 tracking-wide">Style accents</p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-4 uppercase">
-              ACCESSORIES
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-10 font-light">
-              Crafted to complement every wardrobe.
-            </p>
-            
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="text-white border-white bg-transparent hover:bg-white hover:text-black uppercase tracking-[0.2em] text-xs font-semibold rounded-none px-10 py-6"
-            >
-              <Link href="/collections/accessories">
-                SHOP ACCESSORIES
-              </Link>
-            </Button>
-          </div>
-        </div>
-        
-        {/* Carousel Arrows (static for design) */}
-        <button className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors border border-white/20">
-          <ChevronRight className="h-6 w-6 rotate-180" />
-        </button>
-        <button className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors border border-white/20">
-          <ChevronRight className="h-6 w-6" />
-        </button>
-      </section>
+      {/* ─── HERO SECTION (Carousel) ─────────────────────── */}
+      <HeroCarousel />
 
       {/* ─── TRUST BADGES ──────────────────────────────────── */}
       <section className="border-b border-[rgb(var(--border))]">
