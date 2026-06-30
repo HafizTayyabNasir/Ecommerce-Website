@@ -8,7 +8,6 @@ import { AddToCartForm } from "@/components/storefront/add-to-cart-form";
 import { Badge } from "@/components/ui/badge";
 
 export const revalidate = 3600;
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;

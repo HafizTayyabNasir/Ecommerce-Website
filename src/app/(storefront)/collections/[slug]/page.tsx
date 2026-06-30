@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 
 export const revalidate = 3600;
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
