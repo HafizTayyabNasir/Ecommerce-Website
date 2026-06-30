@@ -22,13 +22,11 @@ declare module "next-auth" {
   }
 }
 
+import { authConfig } from "./auth.config";
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
-  pages: {
-    signIn: "/login",
-    error: "/login",
-  },
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -77,28 +75,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
-        token.role = user.role;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as UserRole;
-      }
-      return session;
-    },
+    ...authConfig.callbacks,
     async signIn({ user, account }) {
-      // For OAuth sign-ins, ensure the user role is set
       if (account?.provider !== "credentials") {
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email! },
         });
         if (!existingUser) {
-          // Will be created by the adapter — role defaults to CUSTOMER
           return true;
         }
         if (!existingUser.isActive) {
