@@ -23,6 +23,13 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   };
 }
 
+export async function generateStaticParams() {
+  const products = await prisma.product.findMany({ select: { slug: true } });
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
 async function getProduct(slug: string) {
   const product = await prisma.product.findUnique({
     where: { slug, status: "ACTIVE" },

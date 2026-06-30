@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Filter, SlidersHorizontal, Star } from "lucide-react";
 
 export const revalidate = 3600; // Revalidate every hour
-export const dynamic = "force-dynamic";
 
 async function getProducts(searchParams: { [key: string]: string | string[] | undefined }) {
   const categoryParam = searchParams.category;

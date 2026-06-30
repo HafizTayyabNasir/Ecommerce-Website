@@ -4,7 +4,6 @@ import { prisma } from "@/lib/db";
 import { ChevronRight } from "lucide-react";
 
 export const revalidate = 3600;
-export const dynamic = "force-dynamic";
 
 export default async function CollectionsPage() {
   const collections = await prisma.collection.findMany({

@@ -36,6 +36,18 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   return { title: "Collection Not Found" };
 }
 
+export async function generateStaticParams() {
+  const collections = await prisma.collection.findMany({ select: { slug: true } });
+  const categories = await prisma.category.findMany({ select: { slug: true } });
+  
+  const paths = [
+    ...collections.map((c) => ({ slug: c.slug })),
+    ...categories.map((c) => ({ slug: c.slug })),
+  ];
+  
+  return paths;
+}
+
 async function getCollectionOrCategoryProducts(slug: string) {
   // First check if it's a Collection
   const collection = await prisma.collection.findUnique({
