@@ -96,11 +96,11 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2 mb-6">
               <div className="w-10 h-10 bg-[rgb(var(--accent))] rounded-sm flex items-center justify-center">
                 <span className="text-white font-black text-lg font-['Space_Grotesk']">
-                  S
+                  Z
                 </span>
               </div>
-              <span className="font-['Space_Grotesk'] font-bold text-xl tracking-tight text-white">
-                SUSPENDED
+              <span className="font-['Space_Grotesk'] font-bold text-2xl tracking-tight">
+                Zero Lifestyle
               </span>
             </Link>
             <p className="text-white/50 text-sm mb-6 max-w-xs">
@@ -192,9 +192,9 @@ export function Footer() {
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>+1 (555) 123-4567</span>
               </li>
-              <li className="flex items-center gap-2 text-sm text-white/50">
-                <Mail className="h-4 w-4 shrink-0" />
-                <span>hello@suspended.store</span>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-[rgb(var(--muted-foreground))]" />
+                <span>hello@zerolifestyle.store</span>
               </li>
             </ul>
           </div>
@@ -204,9 +204,9 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/40">
-              © {new Date().getFullYear()} SUSPENDED. All rights reserved.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-[rgb(var(--muted-foreground))]">
+              © {new Date().getFullYear()} Zero Lifestyle. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               {footerLinks.legal.map((link) => (

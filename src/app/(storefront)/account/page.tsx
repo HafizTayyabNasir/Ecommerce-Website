@@ -42,7 +42,7 @@ export default async function AccountPage() {
             {user.loyaltyPoints > 0 && (
               <div className="mt-3 pt-3 border-t border-[rgb(var(--border))]">
                 <p className="text-xs font-bold text-[rgb(var(--accent))] uppercase tracking-wider">
-                  SUSPENDED Rewards
+                  Zero Lifestyle Rewards
                 </p>
                 <p className="text-xl font-bold">{user.loyaltyPoints} PTS</p>
               </div>

@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1600&q=80" 
-            alt="Suspended Hero" 
+            alt="Zero Lifestyle Hero" 
             className="w-full h-full object-cover object-center opacity-80"
           />
           {/* Subtle gradient overlay to make text readable */}
@@ -428,7 +428,7 @@ export default function HomePage() {
                 First Drop? Get 25% Off.
               </h2>
               <p className="text-white/80 mb-6">
-                New to SUSPENDED? Use code <strong>STREET25</strong> at checkout 
+                New to Zero Lifestyle? Use code <strong>STREET25</strong> at checkout 
                 and save on your first order. No minimum, no catch.
               </p>
               <Button

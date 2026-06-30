@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "SUSPENDED — Premium Streetwear & Athleisure",
-    template: "%s | SUSPENDED",
+    default: "Zero Lifestyle — Premium Streetwear & Athleisure",
+    template: "%s | Zero Lifestyle",
   },
   description:
     "Discover premium streetwear and athleisure designed for those who move differently. Built for comfort, styled for the culture.",
@@ -16,19 +16,18 @@ export const metadata: Metadata = {
     "hoodies",
     "joggers",
     "tees",
-  ],
-  authors: [{ name: "SUSPENDED" }],
+  authors: [{ name: "Zero Lifestyle" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "SUSPENDED",
-    title: "SUSPENDED — Premium Streetwear & Athleisure",
+    siteName: "Zero Lifestyle",
+    title: "Zero Lifestyle — Premium Streetwear & Athleisure",
     description:
       "Discover premium streetwear and athleisure designed for those who move differently.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SUSPENDED — Premium Streetwear & Athleisure",
+    title: "Zero Lifestyle — Premium Streetwear & Athleisure",
     description:
       "Discover premium streetwear and athleisure designed for those who move differently.",
   },

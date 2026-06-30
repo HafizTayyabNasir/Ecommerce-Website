@@ -103,12 +103,12 @@ export function Header() {
               <div className="relative">
                 <div className="w-10 h-10 bg-[rgb(var(--foreground))] rounded-sm flex items-center justify-center group-hover:bg-[rgb(var(--accent))] transition-colors duration-300">
                   <span className="text-[rgb(var(--background))] font-black text-lg font-['Space_Grotesk']">
-                    S
+                    Z
                   </span>
                 </div>
               </div>
               <span className="hidden sm:block font-['Space_Grotesk'] font-bold text-xl tracking-tight">
-                SUSPENDED
+                Zero Lifestyle
               </span>
             </Link>
 
@@ -232,7 +232,7 @@ export function Header() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-8">
                 <span className="font-['Space_Grotesk'] font-bold text-xl tracking-tight">
-                  SUSPENDED
+                  Zero Lifestyle
                 </span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
