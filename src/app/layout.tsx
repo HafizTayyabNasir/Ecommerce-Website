@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "hoodies",
     "joggers",
     "tees",
+  ],
   authors: [{ name: "Zero Lifestyle" }],
   openGraph: {
     type: "website",
