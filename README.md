@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SUSPENDED — Premium Streetwear E-Commerce Platform
 
-## Getting Started
+A production-grade, full-stack e-commerce web application modeled after high-end streetwear and athleisure brands. Built with a modern Next.js stack for performance, scalability, and an exceptional user experience.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Server Components, Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + shadcn/ui (Radix primitives)
+- **Database:** PostgreSQL (via Prisma ORM)
+- **Authentication:** NextAuth.js (Auth.js) v5 (Credentials + Google OAuth)
+- **Payments:** Stripe (to be implemented in Phase 3)
+- **State Management:** Zustand (Client) + TanStack Query
+- **Forms:** React Hook Form + Zod
+
+## Features Included in Phase 1
+
+- **Project Scaffold:** Complete Next.js + TS + Tailwind setup.
+- **Data Model:** Comprehensive Prisma schema for Users, Products, Variants, Orders, Cart, Reviews, etc.
+- **Base Layout:** Storefront header with mega-menu, responsive footer, and global design tokens.
+- **Homepage:** Bold, streetwear-aesthetic landing page with hero banner, featured collections, bestsellers, and testimonials.
+- **Admin Dashboard Layout:** Secure admin panel layout with collapsible sidebar and navigation.
+- **Admin Dashboard Home:** Statistical overview, recent orders table, and low stock alerts.
+- **Seed Script:** Populates the database with realistic demo data (Products, Variants, Customers, Orders, Settings).
+- **Authentication:** NextAuth configuration with route protection via middleware (`proxy.ts`).
+
+## Setup Instructions
+
+### 1. Environment Variables
+
+Copy `.env.example` to `.env` and fill in the values:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure you have a running PostgreSQL instance and update the `DATABASE_URL` appropriately. Or, you can use Prisma's local development database feature:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Database Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install dependencies if you haven't already:
+```bash
+npm install
+```
 
-## Learn More
+Push the schema to your database (or use `npx prisma dev` for local managed Postgres):
+```bash
+npx prisma db push
+# or
+npx prisma migrate dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Seed Demo Data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Run the seed script to populate the database with demo products, users, orders, and configuration:
+```bash
+npm run db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Run the Development Server
 
-## Deploy on Vercel
+Start the Next.js development server with Turbopack:
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit [http://localhost:3000](http://localhost:3000) to see the storefront.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture Notes
+
+- **Storefront & Admin Integration:** Both are served from the same Next.js app (`/app/(storefront)` and `/app/admin`).
+- **Middleware Protection:** Admin routes (`/admin/*`) are protected by NextAuth middleware. Only users with roles `SUPPORT`, `MANAGER`, `ADMIN`, or `OWNER` can access them.
+- **UI System:** Custom design system based on `shadcn/ui`, adapted for a dark, bold, streetwear aesthetic using standard CSS variables in `globals.css`.
+- **Database Scaling:** Prisma client is instantiated as a singleton in `src/lib/db.ts` to prevent connection exhaustion in development.
